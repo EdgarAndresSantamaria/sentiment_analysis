@@ -32,11 +32,8 @@ As part of our commitment to providing a clear and consistent assessment of perf
 We propose starting point "train.py" to finetune models,
 
 source .venv/bin/activate
+
 python src/train.py
-
-finally serving fine tunned models,
-
-python src/infer.py
 
 ## ❓ FAQs
 
