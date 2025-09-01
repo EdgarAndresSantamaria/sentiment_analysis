@@ -1,0 +1,13 @@
+ray
+pandas
+evaluate
+torch
+transformers
+ray[tune]
+ray[default]
+ray[serve]
+scikit-learn
+accelerate
+starlette
+tensorboard
+datasets==4.0.0
