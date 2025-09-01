@@ -16,6 +16,9 @@ services:
         - "8000:8000"
       deploy:
         resources:
+          limits:
+            cpus: '4'
+            memory: 4000M
           reservations:
             devices:
             - driver: nvidia
