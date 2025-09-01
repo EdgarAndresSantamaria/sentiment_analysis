@@ -1,11 +1,7 @@
 import evaluate
 import numpy as np
 import pandas as pd
-import ray
-import ray.train.huggingface.transformers
 from datasets import ClassLabel, Dataset, Features, Value
-from ray.train import ScalingConfig
-from ray.train.torch import TorchTrainer
 from transformers import (
     DataCollatorWithPadding,
     EarlyStoppingCallback,
@@ -19,7 +15,7 @@ from utils import id2label, load_model
 def train_func():
 
     def load_dataset():
-        train = pd.read_csv("/workspace/data/dataset.csv", sep=";")
+        train = pd.read_csv("/workspaces/sentiment_analysis/data/dataset.csv", sep=";")
         train = train[["Text", "Score"]]
 
         # rename Score to label in train
@@ -58,7 +54,7 @@ def train_func():
 
     # Hugging Face Trainer
     training_args = TrainingArguments(
-        output_dir="/workspace/model",
+        output_dir="/workspaces/sentiment_analysis/model",
         learning_rate=0.0001,  # convergence
         per_device_eval_batch_size=8,
         per_device_train_batch_size=8,
@@ -91,23 +87,12 @@ def train_func():
         compute_metrics=compute_metrics,
         callbacks=[
             EarlyStoppingCallback(early_stopping_patience=3),
-            ray.train.huggingface.transformers.RayTrainReportCallback(),
         ],
     )
 
     # [3] Prepare Transformers Trainer
     # ================================
-    trainer = ray.train.huggingface.transformers.prepare_trainer(trainer)
     trainer.train()
 
 
-# [4] Define a Ray TorchTrainer to launch `train_func` on all workers
-# ===================================================================
-ray_trainer = TorchTrainer(
-    train_func,
-    scaling_config=ScalingConfig(num_workers=1, use_gpu=True),
-)
-
-
-context = ray.init(dashboard_host="0.0.0.0")
-result: ray.train.Result = ray_trainer.fit()
+train_func()
