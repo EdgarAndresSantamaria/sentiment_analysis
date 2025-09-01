@@ -1,0 +1,67 @@
+{
+    "python.linting.pylintEnabled": false,
+    "python.linting.enabled": true,
+    "python.linting.lintOnSave": true,
+    "python.linting.pylintCategorySeverity.refactor": "Information",
+    "python.linting.pylintCategorySeverity.convention": "Information",
+    "python.formatting.provider": "black",
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./tests",
+        "-p",
+        "*_test.py"
+    ],
+    "python.analysis.extraPaths": [
+        "./src",
+        "."
+    ],
+    "python.analysis.typeCheckingMode": "basic",
+    "autoDocstring.docstringFormat": "numpy",
+    "autoDocstring.startOnNewLine": true,
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "${workspaceFolder}/src:${workspaceFolder}",
+        "JAVA_HOME": "/usr/lib/jvm",
+        "PATH": "/usr/lib/jvm/default-java/bin:${env:PATH}"
+    },
+    "python.envFile": "${workspaceFolder}/.env",
+    "[php]": {
+        "editor.formatOnSave": false
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        }
+      },
+    "isort.args":["--profile", "black"],
+    "browserSync.config": {
+        "browser": [
+            "chrome",
+            "firefox"
+        ],
+        "files": [
+            "*.html"
+        ]
+    },
+    "restructuredtext.preview.docutils.disabled": true,
+    "terminal.integrated.cwd": "${workspaceFolder}",
+    "restructuredtext.pythonRecommendation.disabled": true,
+    "esbonio.sphinx.buildDir": "/root/.vscode-server/data/User/workspaceStorage/10adae8aa381ba88ddde34ad5dc48025/swyddfa.esbonio/sphinx/html",
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "black-formatter.args": [
+        "-l 100"
+    ],
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+}

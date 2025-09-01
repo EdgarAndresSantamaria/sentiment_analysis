@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  development:
+      build:
+        context: .
+        dockerfile: .devcontainer/Dockerfile.dev
+      volumes:
+        - .:/workspace
+        - /mnt/wslg/:/mnt/wslg/
+        - ./logs:/tmp/ray
+      command: /bin/sh -c "while sleep 1000; do :; done"
+      ports:
+        - "4714:4714"
+        - "8265:8265"
+        - "8000:8000"
+      deploy:
+        resources:
+          reservations:
+            devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

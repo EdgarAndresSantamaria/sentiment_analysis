@@ -1,0 +1,6 @@
+.venv
+test/*
+train/*
+logs/*
+model/*
+__pycache__

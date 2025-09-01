@@ -1,0 +1,63 @@
+{
+    "name": "ML Suite",
+    "dockerComposeFile": "../compose.yaml",
+    "service": "development",
+    "shutdownAction": "stopCompose",
+    "postCreateCommand": "sh ./config.unix.sh",
+    "workspaceFolder" :"/workspace/",
+    "runArgs": [
+        "-e",
+        "GIT_EDITOR=code --wait",
+        "--ulimit",
+        "nofile=1024:1024"
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.black-formatter",
+                "ms-python.isort",
+                "ms-python.vscode-pylance",
+                "ms-azuretools.vscode-docker",
+                "mhutchie.git-graph",
+                "GitHub.vscode-pull-request-github",
+                "hediet.vscode-drawio",
+                "DavidAnson.vscode-markdownlint",
+                "lextudio.restructuredtext",
+                "Gruntfuggly.todo-tree",
+                "trond-snekvik.simple-rst",
+                "GitHub.vscode-github-actions",
+                "mechatroner.rainbow-csv",
+                "jasonlhy.vscode-browser-sync",
+                "njpwerner.autodocstring",
+                "ms-vscode.makefile-tools",
+                "stackbreak.comment-divider",
+                "ms-toolsai.jupyter",
+                "tomoki1207.pdf",
+                "atariq11700.debugpy-old",
+                "mongodb.mongodb-vscode"
+            ],
+            // Please keep this file in sync with settings in .vscode/settings.default.json
+            "settings": {
+                "python.pythonPath": ".venv/bin/python",
+                "editor.formatOnPaste": false,
+                "editor.formatOnSave": true,
+                "editor.formatOnType": true,
+                "files.trimTrailingWhitespace": true,
+                "terminal.integrated.profiles.linux": {
+                    "zsh": {
+                        "path": "/usr/bin/zsh"
+                    }
+                },
+                "terminal.integrated.defaultProfile.linux": "zsh",
+                "[python]": {
+                    "editor.defaultFormatter": "ms-python.black-formatter",
+                    "formatting.blackArgs": [
+                        "--line-length",
+                        "100"
+                    ]
+                }
+            }
+        }
+    }
+}
